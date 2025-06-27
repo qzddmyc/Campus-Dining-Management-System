@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>DiningSystem - admin</title>
+    <link rel="stylesheet" href="../../static/css/managerpage.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 左侧区域 -->
+        <div class="left-area">
+            <div class="left-area-upper">
+                <div class="nav-item purple-text nav-choosen" data-tarId="page1">菜品信息管理</div>
+                <div class="nav-item purple-text" data-tarid="page2">食材信息管理</div>
+                <div class="nav-item purple-text" data-tarid="page3">窗口信息管理</div>
+                <div class="nav-item purple-text" data-tarid="page4">供应商管理</div>
+                <div class="nav-item purple-text" data-tarid="page5">学生卡管理</div>
+                <div class="nav-item purple-text" data-tarid="page6">数据分析</div>
+            </div>
+            <div class="left-area-lower">
+                <div class="left-area-lower-left">你好，管理员</div>
+                <div class="left-area-lower-right">
+                    <a href="/login-html">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧区域 -->
+        <div class="right-area">
+            <!-- 各个对应的区域 -->
+            <!-- 页面1 -->
+            <div class="information" id="page1">
+                <!-- 右侧顶部的导航栏 -->
+                <div class="info-nav">
+                    <div class="info-nav-data nav-choosen" data-tarset="set1" data-tarid="txt11">新增菜品</div>
+                    <div class="info-nav-data" data-tarset="set1" data-tarid="txt12">菜品信息修改</div>
+                    <div class="info-nav-data" data-tarset="set1" data-tarid="txt13">季节性菜品上架</div>
+                </div>
+                <!-- 右侧下方的对应区域 -->
+                <div class="info-content">
+                    <!-- 新增菜品 -->
+                    <div class="info-cont-page set1" id="txt11">
+                        <div class="small-page-container">
+                            <form id="form11">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        菜品ID：
+                                    </div>
+                                    <input id="dishID-use-to-clear" type="text" name="dishID" required
+                                        placeholder="菜品ID需要唯一" pattern="^[A-Za-z0-9]+$" title="只可以包含大小写字母与数字">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        菜品名称：
+                                    </div>
+                                    <input id="dishName-use-to-clear" type="text" name="dishName" required
+                                        placeholder="请输入菜品名称">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        菜品售价：
+                                    </div>
+                                    <input type="text" name="dishPrice" required placeholder="请输入售价，至多可以保留两位小数"
+                                        pattern="^(0|[1-9]\d*)(\.\d{1,2})?$">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        菜品库存：
+                                    </div>
+                                    <input id="dishNumber-use-to-clear" type="number" name="dishStock" value="0" min="0"
+                                        required placeholder="库存默认值为0">
+                                </div>
+                                <div class="ipt-container-spec-1-1-1">
+                                    <div class="ingredient-choosen-area">
+
+                                        <div class="text">
+                                            所需食材选择：
+                                        </div>
+                                        <div class="ingredient-choosen-area-lr">
+                                            <div class="ingredient-choosen-area-l">
+                                                <div class="ingredient-list-title">可选食材</div>
+                                                <div class="ingredients-list-container" id="ingredients-list"></div>
+                                            </div>
+                                            <div class="ingredient-choosen-area-r">
+                                                <div class="ingredient-list-title">已选食材</div>
+                                                <div class="selected-list-container" id="selected-list"></div>
+                                                <input type="hidden" id="selected-ingredients-data"
+                                                    name="selectedIngredients" style="display: none;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ipt-container-spec-1-1-2">
+                                    <div class="text">
+                                        菜品季节：
+                                    </div>
+                                    <div class="radio-area">
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason1" name="dishSeason" value="none" checked>
+                                            <label for="dishSeason1">不限</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason2" name="dishSeason" value="spring">
+                                            <label for="dishSeason2">春季</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason3" name="dishSeason" value="summer">
+                                            <label for="dishSeason3">夏季</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason4" name="dishSeason" value="autumn">
+                                            <label for="dishSeason4">秋季</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason5" name="dishSeason" value="winter">
+                                            <label for="dishSeason5">冬季</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ipt-container">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 菜品信息修改 -->
+                    <div class="info-cont-page set1 hidden" id="txt12">
+                        <div class="small-page-container-special2">
+                            <div class="select-container">
+                                <div class="custom-select" id="foodSelect">
+                                    <div class="select-header">
+                                        <span class="select-title">请选择菜品</span>
+                                        <div class="select-icon"></div>
+                                    </div>
+                                    <div class="select-options fade-in" id="selectOptions"></div>
+                                </div>
+                            </div>
+                            <form id="form12">
+                                <input type="text" id="input-dishID-form12" class="hidden" name="dishID"
+                                    value="updatedButNotRecord">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        修改后的菜品售价：
+                                    </div>
+                                    <input type="text" id="input-dishPrice-form12" name="newDishPrice" required
+                                        placeholder="请输入菜品新的售价，至多可以保留两位小数" pattern="^(0|[1-9]\d*)(\.\d{1,2})?$">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        菜品的新库存：
+                                    </div>
+                                    <input type="number" min="0" id="input-dishStock-form12" name="newDishStock"
+                                        required placeholder="请输入菜品的最新库存">
+                                </div>
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 季节性菜品上架 -->
+                    <div class="info-cont-page set1 hidden" id="txt13">
+                        <div class="small-page-container">
+                            <form id="form13">
+                                <div class="ipt-container-spec-1-3-1">
+                                    <div class="text">
+                                        选择需要上架的菜品对应的季节：
+                                    </div>
+                                    <div class="radio-area">
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason2-1" name="dishSeason" value="spring"
+                                                checked>
+                                            <label for="dishSeason2-1">春季</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason2-2" name="dishSeason" value="summer">
+                                            <label for="dishSeason2-2">夏季</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason2-3" name="dishSeason" value="autumn">
+                                            <label for="dishSeason2-3">秋季</label>
+                                        </div>
+                                        <div class="radio-for-season-dish">
+                                            <input type="radio" id="dishSeason2-4" name="dishSeason" value="winter">
+                                            <label for="dishSeason2-4">冬季</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        上架的菜品数量：
+                                    </div>
+                                    <input type="number" id="input-dishNum-form12" name="seasonDishNum" required min="0"
+                                        placeholder="请输入季节菜品的上架数量，非季节菜品数量将会被清空">
+                                </div>
+                                <div class="ipt-container mt30 mb30">
+                                    <button type="submit">提交</button>
+                                </div>
+                                <div class="ipt-container-spec-1-3-2">
+                                    <div class="text">
+                                        季节性菜品展示：
+                                    </div>
+                                </div>
+                                <main class="form-1-3-main">
+                                    <div id="form-1-3-grid-container">
+                                        <!-- 春季菜品卡片 -->
+                                        <div class="form-1-3-season-card" id="form-1-3-spring-card">
+                                            <div class="form-1-3-spring-header form-1-3-season-header">
+                                                <h2 class="form-1-3-season-title">春季菜品</h2>
+                                                <span class="form-1-3-season-count" id="form-1-3-spring-count">0</span>
+                                            </div>
+                                            <div class="form-1-3-season-content form-1-3-custom-scrollbar"
+                                                id="form-1-3-spring-container">
+                                                <table class="form-1-3-season-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>名称</th>
+                                                            <th>价格</th>
+                                                            <th>库存</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="form-1-3-spring-table">
+                                                        <!-- 春季菜品将通过JavaScript动态添加 -->
+                                                        <tr>
+                                                            <td colspan="3" class="form-1-3-empty-state">暂无春季菜品</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- 夏季菜品卡片 -->
+                                        <div class="form-1-3-season-card" id="form-1-3-summer-card">
+                                            <div class="form-1-3-summer-header form-1-3-season-header">
+                                                <h2 class="form-1-3-season-title">夏季菜品</h2>
+                                                <span class="form-1-3-season-count" id="form-1-3-summer-count">0</span>
+                                            </div>
+                                            <div class="form-1-3-season-content form-1-3-custom-scrollbar"
+                                                id="form-1-3-summer-container">
+                                                <table class="form-1-3-season-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>名称</th>
+                                                            <th>价格</th>
+                                                            <th>库存</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="form-1-3-summer-table">
+                                                        <!-- 夏季菜品将通过JavaScript动态添加 -->
+                                                        <tr>
+                                                            <td colspan="3" class="form-1-3-empty-state">暂无夏季菜品</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- 秋季菜品卡片 -->
+                                        <div class="form-1-3-season-card" id="form-1-3-autumn-card">
+                                            <div class="form-1-3-autumn-header form-1-3-season-header">
+                                                <h2 class="form-1-3-season-title">秋季菜品</h2>
+                                                <span class="form-1-3-season-count" id="form-1-3-autumn-count">0</span>
+                                            </div>
+                                            <div class="form-1-3-season-content form-1-3-custom-scrollbar"
+                                                id="form-1-3-autumn-container">
+                                                <table class="form-1-3-season-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>名称</th>
+                                                            <th>价格</th>
+                                                            <th>库存</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="form-1-3-autumn-table">
+                                                        <!-- 秋季菜品将通过JavaScript动态添加 -->
+                                                        <tr>
+                                                            <td colspan="3" class="form-1-3-empty-state">暂无秋季菜品</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- 冬季菜品卡片 -->
+                                        <div class="form-1-3-season-card" id="form-1-3-winter-card">
+                                            <div class="form-1-3-winter-header form-1-3-season-header">
+                                                <h2 class="form-1-3-season-title">冬季菜品</h2>
+                                                <span class="form-1-3-season-count" id="form-1-3-winter-count">0</span>
+                                            </div>
+                                            <div class="form-1-3-season-content form-1-3-custom-scrollbar"
+                                                id="form-1-3-winter-container">
+                                                <table class="form-1-3-season-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>名称</th>
+                                                            <th>价格</th>
+                                                            <th>库存</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="form-1-3-winter-table">
+                                                        <!-- 冬季菜品将通过JavaScript动态添加 -->
+                                                        <tr>
+                                                            <td colspan="3" class="form-1-3-empty-state">暂无冬季菜品</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 数据加载状态 -->
+                                    <div id="form-1-3-loading" class="form-1-3-loading">
+                                        <div class="form-1-3-loading-spinner"></div>
+                                        <p class="form-1-3-loading-text">正在加载菜品数据...</p>
+                                    </div>
+                                </main>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面2 -->
+            <div class="information hidden" id="page2">
+                <div class="info-nav">
+                    <div class="info-nav-data nav-choosen" data-tarset="set2" data-tarid="txt21">新增食材</div>
+                    <!-- 食材信息修改包含：删除（去掉该功能）、修改供应商、采购食材 -->
+                    <div class="info-nav-data" data-tarset="set2" data-tarid="txt22">食材信息修改</div>
+                    <div class="info-nav-data" data-tarset="set2" data-tarid="txt23">采购食材</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-cont-page set2" id="txt21">
+                        <div class="small-page-container">
+                            <form id="form21">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        食材ID：
+                                    </div>
+                                    <input type="text" name="ingredientID" required placeholder="食材ID需要唯一"
+                                        pattern="^[A-Za-z0-9]+$" title="只可以包含大小写字母与数字">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        食材名称：
+                                    </div>
+                                    <input type="text" name="ingredientName" required placeholder="请输入食材名称">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        食材单位：
+                                    </div>
+                                    <input type="text" name="ingredientUnit" required placeholder="请输入食材的单位">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        食材库存：
+                                    </div>
+                                    <input type="number" min="0" name="ingredientStock" required placeholder="请输入食材的库存">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        食材的库存阈值：
+                                    </div>
+                                    <input type="number" min="0" name="ingredientThreshold" required
+                                        placeholder="请输入食材的库存阈值，低于该阈值表示食材需要采购">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        选择菜品的供应商：
+                                    </div>
+                                    <div class="form-2-1-select-container">
+                                        <div class="form-2-1-select-wrapper">
+                                            <select id="form-2-1-basicSelect" name="ingredientSupplierId"
+                                                class="form-2-1-custom-select" title="选择供应商" required>
+                                                <option value="1">选项一</option>
+                                                <option value="2">选项二</option>
+                                                <option value="3">选项三</option>
+                                                <option value="4">选项四</option>
+                                            </select>
+                                            <div class="form-2-1-select-arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="info-cont-page set2 hidden" id="txt22">
+
+                        <div class="small-page-container-special-22">
+                            <div class="select-container">
+                                <div class="custom-select" id="ingreSelect-22">
+                                    <div class="select-header">
+                                        <span class="select-title">请选择食材</span>
+                                        <div class="select-icon"></div>
+                                    </div>
+                                    <div class="select-options fade-in" id="selectOptions22"></div>
+                                </div>
+                            </div>
+                            <form id="form22">
+                                <input type="text" id="input-ingreID-form22" class="hidden" name="ingreID"
+                                    value="updatedButNotRecord">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        修改后的食材阈值：
+                                    </div>
+                                    <input type="number" min="0" id="input-ingreThreshold-form22"
+                                        name="newIngreThreshold" required placeholder="请输入修改后的食材阈值">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        食材的新库存：
+                                    </div>
+                                    <input type="number" min="0" id="input-ingreStock-form22" name="newIngreStock"
+                                        required placeholder="请输入食材的最新库存">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        修改后的食材供应商：
+                                    </div>
+                                    <div class="form-2-2-select-container">
+                                        <div class="form-2-2-select-wrapper">
+                                            <select id="form-2-2-basicSelect" name="ingredientSupplierId"
+                                                class="form-2-2-custom-select" title="选择供应商" required>
+                                                <option value="1">选项一</option>
+                                                <option value="2">选项二</option>
+                                                <option value="3">选项三</option>
+                                                <option value="4">选项四</option>
+                                            </select>
+                                            <div class="form-2-2-select-arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="info-cont-page set2 hidden" id="txt23">
+                        <div class="small-page-container-special-23">
+                            <div class="button-23-for-query-table">查询低于阈值的食材</div>
+                            <div class="tableContainer" id="tableContainer-23">
+                                <table class="dataTable">
+                                    <!-- 表头和内容将由JS动态生成 -->
+                                </table>
+                            </div>
+                            <div class="button-23-for-buy-food not-allowed-to-click">一键采购</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面3 -->
+            <div class="information hidden" id="page3">
+                <div class="info-nav">
+                    <div class="info-nav-data nav-choosen" data-tarset="set3" data-tarid="txt31">新增窗口</div>
+                    <div class="info-nav-data" data-tarset="set3" data-tarid="txt32">窗口信息修改</div>
+                    <div class="info-nav-data" data-tarset="set3" data-tarid="txt33">窗口添加售卖菜品</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-cont-page set3" id="txt31">
+                        <div class="small-page-container">
+                            <form id="form31">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        窗口ID：
+                                    </div>
+                                    <input type="text" name="windowID" required placeholder="窗口ID需要唯一"
+                                        pattern="^[A-Za-z0-9]+$" title="只可以包含大小写字母与数字">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        窗口名称：
+                                    </div>
+                                    <input type="text" name="windowName" required placeholder="请输入窗口的名称">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        窗口负责人：
+                                    </div>
+                                    <input type="text" name="windowManager" required placeholder="请输入窗口的负责人姓名">
+                                </div>
+
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="info-cont-page set3 hidden" id="txt32">
+
+                        <div class="small-page-container-special-32">
+                            <div class="select-container">
+                                <div class="custom-select" id="ingreSelect-32">
+                                    <div class="select-header">
+                                        <span class="select-title">请选择窗口</span>
+                                        <div class="select-icon"></div>
+                                    </div>
+                                    <div class="select-options fade-in" id="selectOptions32"></div>
+                                </div>
+                            </div>
+                            <form id="form32">
+                                <input type="text" id="input-windowID-form32" class="hidden" name="windowID"
+                                    value="updatedButNotRecord">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        窗口的新名称：
+                                    </div>
+                                    <input type="text" id="input-windowName-form32" name="newWindowName" required
+                                        placeholder="请输入修改后的窗口名称">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        窗口的新负责人：
+                                    </div>
+                                    <input type="text" id="input-windowManager-form32" name="newWindowManager" required
+                                        placeholder="请输入修改后的窗口负责人">
+                                </div>
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="info-cont-page set3 hidden" id="txt33">
+                        <div class="small-page-container-special-33">
+                            <div class="page33-windows">
+                                <div class="page33-windows-intro">请选择窗口：</div>
+                                <div class="page33-windows-container">
+                                    <div class="page33-windows-item choosen">窗口1</div>
+                                    <div class="page33-windows-item disabled">窗口1</div>
+                                    <div class="page33-windows-item">窗口1</div>
+                                </div>
+                            </div>
+                            <div class="page33-dishes">
+                                <div class="page33-dish-intro">点击菜品以起售或停售：</div>
+                                <div class="page33-dishes-l-r">
+                                    <div class="page33-dishes-left">
+                                        <div class="page33-dishes-title">未上架菜品</div>
+                                        <div class="page33-dishes-left-container">
+                                            <div class="page33-dishes-item onleft" data-dishid="11">菜品11</div>
+                                            <div class="page33-dishes-item onleft" data-dishid="12">菜品12</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="page33-dishes-right">
+                                        <div class="page33-dishes-title">已上架菜品</div>
+                                        <div class="page33-dishes-right-container">
+                                            <div class="page33-dishes-item onright" data-dishid="21">菜品21</div>
+                                            <div class="page33-dishes-item onright" data-dishid="22">菜品22</div>
+                                            <div class="page33-dishes-item onright" data-dishid="23">菜品23</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面4 -->
+            <div class="information hidden" id="page4">
+                <div class="info-nav">
+                    <!-- 供应商与食材的绑定，需要去食材界面完成 -->
+                    <div class="info-nav-data nav-choosen" data-tarset="set4" data-tarid="txt41">新增供应商</div>
+                    <div class="info-nav-data" data-tarset="set4" data-tarid="txt42">删除供应商</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-cont-page set4" id="txt41">
+                        <div class="small-page-container">
+                            <form id="form41">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        供应商ID：
+                                    </div>
+                                    <input type="text" name="supplierID" required placeholder="供应商ID需要唯一"
+                                        pattern="^[A-Za-z0-9]+$" title="只可以包含大小写字母与数字">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        供应商名称：
+                                    </div>
+                                    <input type="text" name="supplierName" required placeholder="请输入供应商的名称">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        供应商地址：
+                                    </div>
+                                    <input type="text" name="supplierAddress" required placeholder="请输入供应商的供货地址">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        供应商联系电话
+                                    </div>
+                                    <input type="text" name="supplierContactNumber" required placeholder="请输入供应商的联系电话"
+                                        pattern="^1\d{10}$" title="请输入符合手机号码的格式" maxlength="11">
+                                </div>
+
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="info-cont-page set4 hidden" id="txt42">
+                        <div class="small-page-container">
+                            <form id="form42">
+                                <div class="ipt-container mb30">
+                                    <div class="text">
+                                        选择需要删除供应商的名称：
+                                    </div>
+                                    <div class="form-4-2-select-container">
+                                        <div class="form-4-2-select-wrapper">
+                                            <select id="form-4-2-basicSelect" name="supplierId"
+                                                class="form-4-2-custom-select" title="选择供应商" required>
+                                                <option value="1">选项一</option>
+                                                <option value="2">选项二</option>
+                                                <option value="3">选项三</option>
+                                                <option value="4">选项四</option>
+                                            </select>
+                                            <div class="form-4-2-select-arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text lighter">
+                                        你所选择的供应商地址为：
+                                    </div>
+                                    <input class="ipt-address" type="text" name="a" disabled placeholder="请选择供应商">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text lighter">
+                                        你所选择的供应商的联系方式为：
+                                    </div>
+                                    <input class="ipt-contact" type="text" name="b" disabled placeholder="请选择供应商">
+                                </div>
+                                <div class="ipt-container mt30">
+                                    <button type="submit">删除</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面5 -->
+            <div class="information hidden" id="page5">
+                <div class="info-nav">
+                    <!-- 添加注释：学生卡绑定需要前往学生注册页面 -->
+                    <div class="info-nav-data nav-choosen" data-tarset="set5" data-tarid="txt51">新建空白学生卡</div>
+                    <div class="info-nav-data" data-tarset="set5" data-tarid="txt52">查询学生卡信息</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-cont-page set5" id="txt51">
+                        <div class="small-page-container">
+                            <form id="form51">
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        学生卡ID：
+                                    </div>
+                                    <input type="text" name="studentCardID" required
+                                        placeholder="学生卡ID需要唯一，新建后可前往学生登录页面绑定学生卡" pattern="^[A-Za-z0-9]+$"
+                                        title="只可以包含大小写字母与数字">
+                                </div>
+                                <div class="ipt-container">
+                                    <div class="text">
+                                        学生卡初始余额：
+                                    </div>
+                                    <input type="number" min="0" step="100" max="2000" name="studentCardBalance"
+                                        required placeholder="请输入为学生卡初始充值的余额">
+                                </div>
+
+                                <div class="ipt-container mt30">
+                                    <button type="submit">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="info-cont-page set5 hidden" id="txt52">
+                        <div class="small-page-container-special">
+                            <div class="fake-button" id="query-for-52">点击查询</div>
+                            <div class="tableContainer mbmtForm" id="tableContainer-52">
+                                <table class="dataTable">
+                                    <!-- 表头和内容将由JS动态生成 -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面6 -->
+            <div class="information hidden" id="page6">
+                <div class="info-nav">
+                    <div class="info-nav-data nav-choosen" data-tarset="set6" data-tarid="txt61">统计营业额</div>
+                    <div class="info-nav-data" data-tarset="set6" data-tarid="txt62">热门菜品排行</div>
+                    <div class="info-nav-data" data-tarset="set6" data-tarid="txt63">窗口绩效</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-cont-page set6" id="txt61">
+                        <div class="small-page-container-special">
+                            <form id="form61">
+                                <div class="content-61">选择起始日期：</div>
+                                <input type="date" name="startDate" required>
+                                <div class="content-61">选择结束日期：</div>
+                                <input type="date" name="endDate" required>
+                                <div class="fake-button" id="submit-button-61">确认</div>
+                            </form>
+                            <div class="tableContainer mbmtForm" id="tableContainer-61">
+                                <table class="dataTable"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-cont-page set6 hidden" id="txt62">
+                        <div class="small-page-container-special">
+                            <div class="fake-button" id="query-for-62">点击查询并展示热门菜品TOP10</div>
+                            <div class="tableContainer mbmtForm" id="tableContainer-62">
+                                <table class="dataTable">
+                                    <!-- 表头和内容将由JS动态生成 -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-cont-page set6 hidden" id="txt63">
+                        <div class="small-page-container-special">
+                            <div class="fake-button" id="query-for-63">点击查询窗口绩效</div>
+                            <div class="tableContainer mbmtForm" id="tableContainer-63">
+                                <table class="dataTable">
+                                    <!-- 表头和内容将由JS动态生成 -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../static/js/managerpage.js"></script>
+    <script src="../../static/js/managerpage1.js"></script>
+    <script src="../../static/js/managerpage2.js"></script>
+    <script src="../../static/js/managerpage3.js"></script>
+    <script src="../../static/js/managerpage4.js"></script>
+    <script src="../../static/js/managerpage5.js"></script>
+    <script src="../../static/js/managerpage6.js"></script>
+</body>
+
+</html>

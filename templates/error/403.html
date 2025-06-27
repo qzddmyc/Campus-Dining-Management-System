@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiningSystem - 403</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #f8faff;
+        }
+
+        .no-select {
+            user-select: none;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            box-shadow: inset 0 -80px 80px -80px rgba(138, 123, 255, 0.5);
+        }
+
+        .txt {
+            width: 100%;
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+            font-size: 40px;
+            color: #8a7bff;
+        }
+
+        :focus-visible {
+            outline: 1px solid #a394ffaa;
+            border-radius: 2px;
+        }
+
+        ::selection {
+            background-color: #8a7bff;
+            color: #f8faff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container no-select">
+        <div class="txt">403 无权限访问，请先登录！</div>
+    </div>
+</body>
+
+</html>

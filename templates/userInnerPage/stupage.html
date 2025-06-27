@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>DiningSystem - student</title>
+    <link rel="stylesheet" href="../../static/css/stupage.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 左侧区域 -->
+        <div class="left-area">
+            <div class="left-area-upper">
+                <div class="nav-item purple-text nav-choosen" data-tarId="page1">订餐系统</div>
+                <div class="nav-item purple-text" data-tarid="page2">账单查询</div>
+                <div class="nav-item purple-text" data-tarid="page3">学生卡充值</div>
+                <div class="nav-item purple-text" data-tarid="page4">登录密码修改</div>
+            </div>
+            <div class="left-area-lower">
+                <div class="left-area-lower-left">你好，学生用户</div>
+                <div class="left-area-lower-right">
+                    <a href="/login-html">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧区域 -->
+        <div class="right-area">
+            <!-- 页面1 -->
+            <div class="information" id="page1">
+                <div class="small-page-container">
+                    <form id="form-s1">
+                        <div class="text-in-s1">选择你的就餐方式：</div>
+                        <div class="radio-container-meal-style">
+                            <input class="hidden" type="radio" id="form-s1-meal-style-1" name="mealStyle" value="dining"
+                                checked>
+                            <label class="label-meal-style" for="form-s1-meal-style-1">堂食</label>
+                            <input class="hidden" type="radio" id="form-s1-meal-style-2" name="mealStyle"
+                                value="takeout">
+                            <label class="label-meal-style" for="form-s1-meal-style-2">外卖</label>
+                            <div class="cover-for-selected"></div>
+                        </div>
+                        <div class="dish-select-container">
+                            <input type="text" id="input-windowId-form-s1" class="hidden" name="windowID"
+                                value="updatedButNotRecord">
+                            <div class="text-in-s1">选择点餐窗口：</div>
+                            <div class="select-container">
+                                <div class="custom-select" id="ingreSelect-s1">
+                                    <div class="select-header">
+                                        <span class="select-title">请选择窗口</span>
+                                        <div class="select-icon"></div>
+                                    </div>
+                                    <div class="select-options fade-in" id="selectOptions-s1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-in-s1">点餐区域：</div>
+                        <div class="page-s1-dishes">
+                            <div class="page-s1-dishes-title">菜品选择区</div>
+                            <div class="page-s1-dishes-container">
+                                <div class="page-s1-dishes-item" data-dishid="1" data-windowid="1">
+                                    <div class="item-left">
+                                        <div class="item-left-up">菜品1</div>
+                                        <div class="item-left-down">
+                                            <div class="item-stocks">库存：45</div>
+                                            <div class="item-price">单价：12.00元</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-right">
+                                        <div class="action-btn reduce">&minus;</div>
+                                        <div class="dish-number">1</div>
+                                        <div class="action-btn add">&plus;</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sum-money-area">总计：0元</div>
+                        <div class="button-area">
+                            <button>确认下单</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- 页面2 -->
+            <div class="information hidden" id="page2">
+                <div class="small-page-container">
+                    <div class="fake-button" id="query-for-s2">点击查询个人订单</div>
+                    <div class="tableContainer" id="tableContainer-s2">
+                        <table class="dataTable">
+                            <!-- 表头和内容将由JS动态生成 -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- 页面3 -->
+            <div class="information hidden" id="page3">
+                <div class="small-page-container">
+                    <div class="balance-area">
+                        <div class="balance-area-show">点击右侧查询当前学生卡余额</div>
+                        <div class="balance-area-query">查询</div>
+                    </div>
+                    <form id="form-s3">
+                        <input type="number" min="0.01" max="1000" step="0.01" name="recharge" placeholder="请输入充值的金额"
+                            required>
+                        <button>确认充值</button>
+                    </form>
+                </div>
+            </div>
+            <!-- 页面4 -->
+            <div class="information hidden" id="page4">
+                <div class="small-page-container">
+                    <form id="form-s4">
+                        <div class="text-in-s4">请确认您的学号：</div>
+                        <div class="fake-ipt mb30"></div>
+                        <div class="text-in-s4">请输入旧密码：</div>
+                        <input type="password" name="pwd_old" class="mb30" required pattern="^\w+$"
+                            title="只可以包含大小写字母，数字与下划线">
+                        <div class="text-in-s4">请输入需要修改的新密码：</div>
+                        <input type="password" name="pwd_new1" class="mb30" required pattern="^\w+$"
+                            title="只可以包含大小写字母，数字与下划线">
+                        <div class="text-in-s4">请再次输入新密码：</div>
+                        <input type="password" name="pwd_new2" class="mb24" required pattern="^\w+$"
+                            title="只可以包含大小写字母，数字与下划线">
+                        <button>确认修改</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../static/js/stupage.js"></script>
+</body>
+
+</html>

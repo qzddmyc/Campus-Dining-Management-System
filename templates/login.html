@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<title>DiningSystem - login</title>
+	<link rel="stylesheet" href="../static/css/login.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="login">
+			<div class="up">
+				<div class="up-left choosen-bacc">管理员登录</div>
+				<div class="up-right">学生登录</div>
+			</div>
+			<div class="down">
+				<div class="page-manager">
+					<div class="manager-input-box">
+						<form id="managerForm">
+							<div class="ipt-container">
+								<div class="text">
+									管理员账号：
+								</div>
+								<input type="text" name="managerName" required placeholder="默认为root"
+									pattern="^[A-Za-z0-9]+$" title="只可以包含大小写字母与数字">
+							</div>
+							<div class="ipt-container">
+								<div class="text">
+									管理员密码：
+								</div>
+								<input type="password" name="pwd" required placeholder="默认为admin" pattern="^\w+$"
+									title="只可以包含大小写字母，数字与下划线">
+							</div>
+							<div class="ipt-container">
+								<button id="manager-button">确认</button>
+							</div>
+						</form>
+					</div>
+					<div class="manager-else"></div>
+				</div>
+				<div class="page-student hidden">
+					<div class="student-input-box">
+						<form id="studentForm">
+							<div class="ipt-container">
+								<div class="text">
+									学号：
+								</div>
+								<input type="text" name="stuID" required placeholder="请输入你的学号" pattern="^[A-Za-z0-9]+$"
+									title="只可以包含大小写字母与数字">
+							</div>
+							<div class="ipt-container">
+								<div class="text">
+									密码：
+								</div>
+								<input type="password" name="pwd" required placeholder="请输入你的登录密码" pattern="^\w+$"
+									title="只可以包含大小写字母，数字与下划线">
+							</div>
+							<div class="ipt-container">
+								<button>确认</button>
+							</div>
+						</form>
+					</div>
+					<div class="student-else">
+						<div class="addStu">
+							<a href="/api/addStu/addStu-html">注册用户&nbsp;&gt;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../static/js/login.js"></script>
+</body>
+
+</html>

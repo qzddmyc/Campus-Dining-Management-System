@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>DiningSystem - regist</title>
+    <link rel="stylesheet" href="../../static/css/addStu.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="addStu">
+            <div class="back">
+                <a href="/login-html">&lt;&nbsp;返回登录</a>
+            </div>
+            <div class="title">学生注册</div>
+            <div class="theForm">
+                <form id="stuRegister">
+                    <div class="ipt-container">
+                        <div class="text">
+                            学号：
+                        </div>
+                        <input type="text" name="stuID" required placeholder="学生学号" pattern="^[A-Za-z0-9]+$"
+                            title="只可以包含大小写字母与数字">
+                    </div>
+                    <div class="ipt-container">
+                        <div class="text">
+                            姓名：
+                        </div>
+                        <input type="text" name="stuName" required placeholder="学生姓名">
+                    </div>
+                    <div class="ipt-container">
+                        <div class="text">
+                            学生卡卡号：
+                        </div>
+                        <input type="text" name="stuCardID" required placeholder="所绑定的学生卡卡号（不存在会创建）"
+                            pattern="^[A-Za-z0-9]+$" title="只可以包含大小写字母与数字">
+                    </div>
+                    <div class="ipt-container">
+                        <div class="text">
+                            密码：
+                        </div>
+                        <input type="password" name="pwd" required placeholder="请设置你的登录密码" pattern="^\w+$"
+                            title="只可以包含大小写字母，数字与下划线">
+                    </div>
+                    <div class="ipt-container">
+                        <button>确认</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../../static/js/addStu.js"></script>
+</body>
+
+</html>
