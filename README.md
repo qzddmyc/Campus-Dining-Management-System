@@ -5,7 +5,7 @@
 - 这是高校食堂餐饮管理系统。
 - 环境：
   - 前端：HTML、CSS、JavaScript
-  - 后端：Python Flask框架
+  - 后端：Python Flask 框架
   - 数据库：SQL Server
 - 功能：
   - 用户登录与注册功能。其中，用户包括管理员与学生两类。
@@ -15,7 +15,7 @@
  
 ## 环境配置
 
-> 说明：启用本项目前，需要确保SQL Server与Python环境被正确配置。注意，这份环境配置及项目文件是基于Windows系统，且SQL Server通过Windows身份验证连接（免密连接）实现的。如果数据库的连接需要身份验证，请自行修改命令行，以及config.py与database.py中的文件配置信息。加密连接的基本格式如下：
+> 说明：启用本项目前，需要确保 SQL Server 与 Python 环境被正确配置。注意，这份环境配置及项目文件是基于 Windows 系统，且 SQL Server 通过 Windows 身份验证连接（免密连接）实现的。如果数据库的连接需要身份验证，请自行修改命令行，以及 config.py 与 database.py 中的文件配置信息。加密连接的基本格式如下：
 ```python
 # config.py
 
@@ -45,19 +45,19 @@ connection = pyodbc.connect(
 ```batch
 sudo sc start MSSQLSERVER
 ```
-2. 建立名为DiningManagementSystem的空数据库：
+2. 建立名为 DiningManagementSystem 的空数据库：
 ```batch
 sqlcmd -Q "CREATE DATABASE DiningManagementSystem"
 ```
-3. 安装所需的Python三方库：
+3. 安装所需的 Python 三方库：
 ```batch
 pip install -r requirements.txt
 ```
-4. 使用initial_db.py对数据库一键初始化：
+4. 使用 initial_db.py 对数据库一键初始化：
 ```batch
 python -m initdatabase.initial_db
 ```
-5. 运行app.py以开启服务：
+5. 运行 app.py 以开启服务：
 ```batch
 python app.py
 ```
@@ -65,15 +65,15 @@ python app.py
 ```plaintext
 http://127.0.0.1:8080
 ```
-> 如果遇到端口占用的情况，请前往app.py中修改app.run方法中的端口值
+> 如果遇到端口占用的情况，请前往 app.py 中修改 app.run 方法中的端口值
 <br/>
 
 ## 说明
-- 管理员的账号为root，密码为admin，无法通过该管理系统更改，但可以从config.py中修改以下默认值：
+- 管理员的账号为 root，密码为 admin，无法通过该管理系统更改，但可以从 config.py 中修改以下默认值：
 ```python
 ADMIN_ID = "root"
 ADMIN_PASSWORD = "admin"
 ```
-> 注意，这里的默认值修改后，页面中表单输入框内的placeholder值并不会改变。如果需要同步设置，请前往templates/login.html文件中自行修改
-- 学生的初始账号密码请前往initdatabase/initial_db.py中查看。
-- 在database文件夹中存在一个checkreference.sql文件，这是数据库触发器的设置文件，在初始化时并未被执行，也不建议执行。
+> 注意，这里的默认值修改后，页面中表单输入框内的 placeholder 值并不会改变。如果需要同步设置，请前往 templates/login.html 文件中自行修改
+- 学生的初始账号密码请前往 initdatabase/initial_db.py 中查看。
+- 在database文件夹中存在一个 checkreference.sql 文件，这是数据库触发器的设置文件，在初始化时并未被执行，也不建议执行。
