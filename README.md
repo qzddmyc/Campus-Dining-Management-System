@@ -55,7 +55,7 @@ pip install -r requirements.txt
 ```
 4. 使用initial_db.py对数据库一键初始化：
 ```batch
- python -m initdatabase.initial_db
+python -m initdatabase.initial_db
 ```
 5. 运行app.py以开启服务：
 ```batch
