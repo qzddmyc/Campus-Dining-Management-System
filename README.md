@@ -3,19 +3,21 @@
 ## 简介
 
 - 这是高校食堂餐饮管理系统。
-- 环境：
-  - 前端：HTML、CSS、JavaScript
+- 技术栈：
+  - 前端：原生 HTML、CSS、JavaScript
   - 后端：Python Flask 框架
   - 数据库：SQL Server
 - 功能：
   - 用户登录与注册功能。其中，用户包括管理员与学生两类。
   - 管理员具有管理菜品、食材、窗口与供应商，管理学生信息，以及数据分析的权限。
-  - 学生具有点餐、学生卡充值、登录密码修改的权限。
+  - 学生具有点餐、账单查询、学生卡充值、登录密码修改的权限。
 <br/>
  
 ## 环境配置
 
-> 说明：启用本项目前，需要确保 SQL Server 与 Python 环境被正确配置。注意，这份环境配置及项目文件是基于 Windows 系统，且 SQL Server 通过 Windows 身份验证连接（免密连接）实现的。如果数据库的连接需要身份验证，请自行修改命令行，以及 config.py 与 database.py 中的文件配置信息。加密连接的基本格式如下：
+> 说明：启用本项目前，需要确保 SQL Server 与 Python 环境被正确配置。
+> 
+> 注意，这份项目是基于 SQL Server 的 Windows 身份验证连接（免密连接）实现的。如果数据库的连接需要身份验证，请自行修改命令行，以及 config.py 与 database.py 中的文件配置信息。其基本格式如下：
 ```python
 # config.py
 
@@ -41,7 +43,7 @@ connection = pyodbc.connect(
 <br/>
 
 #### 配置步骤：
-1. 开启数据库服务：
+1. 开启数据库服务（Windows 11 24H2 +）：
 ```batch
 sudo sc start MSSQLSERVER
 ```
@@ -65,7 +67,7 @@ python app.py
 ```plaintext
 http://127.0.0.1:8080
 ```
-> 如果遇到端口占用的情况，请前往 app.py 中修改 app.run 方法中的端口值
+> 如果遇到端口占用的情况，请前往 app.py 修改 app.run 方法中的端口值
 <br/>
 
 ## 说明
@@ -77,3 +79,4 @@ ADMIN_PASSWORD = "admin"
 > 注意，这里的默认值修改后，页面中表单输入框内的 placeholder 值并不会改变。如果需要同步设置，请前往 templates/login.html 文件中自行修改
 - 学生的初始账号密码请前往 initdatabase/initial_db.py 中查看。
 - 在database文件夹中存在一个 checkreference.sql 文件，这是数据库触发器的设置文件，在初始化时并未被执行，也不建议执行。
+- 由于一定的限制，在实现部分的“添加信息”功能后，需要刷新浏览器页面，才可以使得新信息被渲染出来。
