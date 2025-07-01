@@ -2,6 +2,8 @@ import bcrypt
 import pyodbc
 from config import DB_CONFIG
 
+# 这是定义数据库基本接口的文件。所有与数据库连接、执行语句的接口均在此。
+
 
 def get_db_connection():
     """获取SQL Server数据库连接"""
@@ -92,7 +94,7 @@ def check_value_exists(table_name: str, column_name: str, value: str) -> bool:
 
 
 def save_password(stuId: str, pwd: str) -> bool:
-    """给定学生id与用户自定义密码，将其保存至数据库，并返回正确状态"""
+    # 给定学生id与用户自定义密码，将其保存至数据库，并返回正确状态
 
     if check_value_exists('Password', 'StudentID', stuId):
         return False
