@@ -80,6 +80,8 @@ def main():
         print(f"未找到数据脚本: {data_sql_path}")
         return
 
+    print("正在初始化学生账号密码信息...")
+
     stu_pwd_data = [('STU001', 'PWD001'),
                     ('STU002', 'PWD002'),
                     ('STU003', 'PWD003'),
@@ -114,5 +116,7 @@ if __name__ == "__main__":
     # 开启数据库服务: sudo sc start MSSQLSERVER
 
     check = input(f'确定初始化你的{DB_NAME}数据库吗？你需要保证该数据库已存在。(y/n) :')
-    if check == 'y':
+    if check == 'y' or check == 'Y':
         main()
+    else:
+        print('初始化操作取消')
