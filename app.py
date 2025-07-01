@@ -30,6 +30,11 @@ def index():
     return render_template('login.html')
 
 
+@app.errorhandler(404)
+def page_not_found():
+    return render_template('error/404.html'), 404
+
+
 if __name__ == '__main__':
     checkIfConn = get_db_connection()
     if checkIfConn:
