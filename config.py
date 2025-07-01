@@ -10,7 +10,7 @@ DB_CONFIG = {
     'trusted_connection': 'yes'
 }
 
-# 允许的延迟秒数
+# 允许的延迟秒数，用于登录时的第一次验证。详见usrInner.py文件
 ALLOWED_DELAY = 2
 
 # 默认的管理员账号名称
