@@ -42,7 +42,7 @@ managerForm.addEventListener('submit', async function (e) {
 
         // 处理响应结果
         if (result.success) {
-            console.log(result.message);
+            // console.log(result.message);
             alert('登录成功，即将进入管理员页面。');
 
             // 保存session身份信息
@@ -68,7 +68,7 @@ managerForm.addEventListener('submit', async function (e) {
             link.click();
 
         } else {
-            console.log(result.message);
+            // console.log(result.message);
             alert(`登录失败：${result.message}`);
         }
     } catch (error) {
@@ -98,7 +98,7 @@ studentForm.addEventListener('submit', async function (e) {
 
         // 处理响应结果
         if (result.success) {
-            console.log(result.message);
+            // console.log(result.message);
             alert('登录成功，即将进入个人主页。');
 
             // 保存session身份信息
@@ -124,7 +124,7 @@ studentForm.addEventListener('submit', async function (e) {
             link.click();
 
         } else {
-            console.log(result.message);
+            // console.log(result.message);
             alert(`登录失败：${result.message}`);
         }
     } catch (error) {

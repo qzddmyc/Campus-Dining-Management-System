@@ -17,7 +17,7 @@ stuRegisterForm.addEventListener('submit', async function (e) {
 
         // 处理响应结果
         if (result.success) {
-            console.log(result.message);
+            // console.log(result.message);
             alert('注册成功！即将返回登录页面。')
             const targetURL = `${window.location.protocol}//${window.location.host}/login-html`;
             // console.log(targetURL);
@@ -25,7 +25,7 @@ stuRegisterForm.addEventListener('submit', async function (e) {
             window.location.replace(targetURL);
 
         } else {
-            console.log(result.message);
+            // console.log(result.message);
             alert('注册失败：' + result.message);
 
         }
