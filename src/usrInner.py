@@ -41,7 +41,7 @@ def get_manageInnerPage():
 def goto_managerInnerPage():
     if session.get('usrId') == 'root':
         return render_template("userInnerPage/managerpage.html")
-    return render_template("error/401.html")
+    return render_template("error/401.html"), 401
 
 
 # 普通用户登录逻辑
@@ -78,4 +78,4 @@ def goto_studentInnerPage():
     session_uid = session.get('usrId')
     if session_uid is not None and session_uid != DEFAULT_ADMIN_NAME and check_value_exists('Student', 'StudentID', session_uid):
         return render_template("userInnerPage/stupage.html")
-    return render_template("error/401.html")
+    return render_template("error/401.html"), 401
