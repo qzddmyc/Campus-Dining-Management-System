@@ -243,6 +243,7 @@ body {
 }
 
 /* split */
+
 /* 数据展示的表格样式 */
 
 .tableContainer {
@@ -743,7 +744,6 @@ body {
     /* background-color: bisque; */
     padding: 10px;
     padding-left: 40px;
-    /* margin-bottom: 20px; */
 }
 
 .ipt-container-spec-1-3-1 .text {
@@ -964,7 +964,6 @@ body {
     height: 30px;
     /* background-color: bisque; */
     padding: 0 40px;
-    /* padding-left: 40px; */
     margin-top: 50px;
 }
 
@@ -1054,10 +1053,8 @@ body {
 .form-2-1-custom-select option,
 .form-2-2-custom-select option,
 .form-4-2-custom-select option {
-    /* padding: 8px 12px; */
     color: #8a7bff;
     background-color: #f9f9fff0;
-    /* border-bottom: 2px solid red; */
     cursor: pointer;
 }
 
@@ -1178,7 +1175,7 @@ body {
     user-select: none;
     width: 720px;
     /* 刚好占据整个页面的高度 */
-    min-height: 637px;
+    min-height: calc(100vh - 137px);
     margin-top: 55px;
 }
 
@@ -1385,7 +1382,7 @@ body {
     user-select: none;
     width: 720px;
     /* 刚好占据整个页面的高度 */
-    min-height: 637px;
+    min-height: calc(100vh - 137px);
     margin-top: 55px;
 }
 
