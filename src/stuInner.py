@@ -15,7 +15,7 @@ def getStudentInfo():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({
@@ -68,7 +68,7 @@ def addBalanceToStuCard():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({
@@ -111,7 +111,7 @@ def getStudentOrderData():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({
@@ -168,7 +168,7 @@ def getWindowData_stu():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({
@@ -206,7 +206,7 @@ def getDishData_selected_by_windows():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({
@@ -271,7 +271,7 @@ def stuOrder():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({
@@ -418,7 +418,7 @@ def modifyStuPwd():
     if not stuId:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden, please login"
+            'message': "401 Forbidden, please login"
         })
     if stuId == DEFAULT_ADMIN_NAME:
         return jsonify({

@@ -13,7 +13,7 @@ def getIngredientsData():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     query = "SELECT IngredientID, IngredientName, Unit, Stock, Threshold, SupplierID FROM Ingredient"
@@ -44,7 +44,7 @@ def getDishData():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     query = "SELECT DishID, DishName, Price, DishStock, SeasonalAttribute FROM Dish"
@@ -162,7 +162,7 @@ def modifyDish():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     dishID = request.form.get('dishID')
@@ -204,7 +204,7 @@ def modifySeasonDish():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': '403 Forbidden'
+            'message': '401 Forbidden'
         })
 
     chosenSeason = request.form.get('dishSeason')
@@ -249,7 +249,7 @@ def getSupplierDetails():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': '403 Forbidden'
+            'message': '401 Forbidden'
         })
     query = "SELECT SupplierID, SupplierName, Address, ContactNumber FROM Supplier"
 
@@ -280,7 +280,7 @@ def addIngredient():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': '403 Forbidden'
+            'message': '401 Forbidden'
         })
 
     ingredientID = request.form.get('ingredientID')
@@ -326,7 +326,7 @@ def modifyIngredient():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     ingreID = request.form.get('ingreID')
@@ -373,7 +373,7 @@ def getWindowData():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     query = "SELECT WindowID, WindowName, Manager FROM Window"
@@ -402,7 +402,7 @@ def modifyWindow():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     windowID = request.form.get('windowID')
@@ -444,7 +444,7 @@ def getIngredientsDataBelowThreshold():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     query = "SELECT IngredientID, IngredientName, Stock, Threshold FROM Ingredient WHERE Stock < Threshold"
@@ -475,7 +475,7 @@ def buyIngredientsBelowThresholdToIt():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     update_query = """
@@ -504,7 +504,7 @@ def addWindow():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     windowID = request.form.get('windowID')
@@ -542,7 +542,7 @@ def addSupplier():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     supplierID = request.form.get('supplierID')
@@ -581,7 +581,7 @@ def addStudentCard():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     studentCardID = request.form.get('studentCardID')
@@ -619,7 +619,7 @@ def getSalesData():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     windowId = request.data.decode('utf-8')
@@ -656,7 +656,7 @@ def modifyDishToWindow():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
 
     data = request.json
@@ -702,7 +702,7 @@ def delSupplier():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden"
+            'message': "401 Forbidden"
         })
     supplierId = request.form.get('supplierId')
     if check_value_exists('Ingredient', 'SupplierID', supplierId):
@@ -732,7 +732,7 @@ def getStudentCardData():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     query = """
@@ -779,7 +779,7 @@ def getHot10Dish():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     query = """
@@ -818,7 +818,7 @@ def getWindowSales():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'data': "403 Forbidden"
+            'data': "401 Forbidden"
         })
 
     # 不显示无绩效的窗口的query语句
@@ -874,7 +874,7 @@ def getOrdersBetweenDates():
     if session.get('usrId') != DEFAULT_ADMIN_NAME:
         return jsonify({
             'success': False,
-            'message': "403 Forbidden",
+            'message': "401 Forbidden",
             'data': "none"
         })
 
