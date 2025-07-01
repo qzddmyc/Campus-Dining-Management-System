@@ -4,8 +4,7 @@ from datetime import datetime
 import json
 
 from config import DEFAULT_ADMIN_NAME
-from database import execute_query, execute_non_query, check_value_exists, verify_stuAccount_password, \
-    update_stuAccount_password
+from database import execute_query, execute_non_query, check_value_exists, verify_stuAccount_password, update_stuAccount_password
 
 stuInner_bp = Blueprint('stuInner', __name__, url_prefix='/api/stuRequest')
 
@@ -192,8 +191,8 @@ def getWindowData_stu():
             "message": "数据库查询失败"
         })
 
-    formatted_data = [{'windowId': item['WindowID'], 'windowName': item['WindowName'], 'manager': item['Manager']} for
-                      item in result]
+    formatted_data = [{'windowId': item['WindowID'], 'windowName': item['WindowName'], 'manager': item['Manager']}
+                    for item in result]
 
     return jsonify({
         'success': True,
@@ -337,6 +336,7 @@ def stuOrder():
             'message': "查询订单编号失败"
         })
 
+    # 自动生成下一条订单编号。值得注意的是，这里可能会造成并发问题！暂不做修改。
     def get_order_number_add1(s):
         number = int(s[3::]) + 1
         str_number = str(number)

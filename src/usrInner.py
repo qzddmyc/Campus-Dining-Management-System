@@ -76,7 +76,6 @@ def get_studentInnerPage():
 @usrInner_bp.route('/theStudentInnerPage')
 def goto_studentInnerPage():
     session_uid = session.get('usrId')
-    if session_uid is not None and session_uid != DEFAULT_ADMIN_NAME and check_value_exists('Student',
-                                                                                            'StudentID', session_uid):
+    if session_uid is not None and session_uid != DEFAULT_ADMIN_NAME and check_value_exists('Student', 'StudentID', session_uid):
         return render_template("userInnerPage/stupage.html")
     return render_template("error/403.html")

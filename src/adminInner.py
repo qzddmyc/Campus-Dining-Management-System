@@ -388,8 +388,7 @@ def getWindowData():
         })
 
     # 转换数据格式
-    formatted_data = [{'id': item['WindowID'], 'name': item['WindowName'], 'manager': item['Manager']} for item in
-                      result]
+    formatted_data = [{'id': item['WindowID'], 'name': item['WindowName'], 'manager': item['Manager']} for item in result]
 
     # 返回 JSON 响应
     return jsonify({
