@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const leftButtons = document.querySelectorAll('.nav-item');
     const rightWholePages = document.querySelectorAll('.information');
 
+    // 也可采用事件委托，但这里直接绑定事件至子元素。
     leftButtons.forEach(buts => {
         buts.addEventListener('click', function () {
             if (this.classList.contains('nav-choosen')) return;

@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const leftButtons = document.querySelectorAll('.nav-item');
     const rightWholePages = document.querySelectorAll('.information');
 
+    // 直接绑定至子元素
     leftButtons.forEach(buts => {
         buts.addEventListener('click', function () {
             if (this.classList.contains('nav-choosen')) return;
@@ -19,7 +20,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
             document.getElementById(targetId).classList.remove('hidden');
-            // console.log('11');
 
         })
     });
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // 右侧各个导航栏的切换
     const allRightButtons = document.querySelectorAll('.info-nav-data');
 
+    // 直接绑定至子元素
     allRightButtons.forEach(smallBut => {
         smallBut.addEventListener('click', function () {
             if (this.classList.contains('nav-choosen')) return;
