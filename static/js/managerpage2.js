@@ -501,7 +501,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loadTableData(data_for_tableContainer_23, 'tableContainer-23');
 
         const buttonForBuyFood = document.querySelector('.button-23-for-buy-food');
-        if (buttonForBuyFood.classList.contains('not-allowed-to-click') && data_for_tableContainer_23.length != 0) {
+        if (buttonForBuyFood.classList.contains('not-allowed-to-click') && data_for_tableContainer_23.length !== 0) {
             buttonForBuyFood.classList.remove('not-allowed-to-click');
         }
     })
