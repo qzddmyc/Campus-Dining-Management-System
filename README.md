@@ -49,8 +49,13 @@ sudo sc start MSSQLSERVER
 ```
 2. 建立名为 DiningManagementSystem 的空数据库：
 ```batch
-sqlcmd -Q "CREATE DATABASE DiningManagementSystem"
+sqlcmd -S localhost -Q "CREATE DATABASE DiningManagementSystem"
 ```
+> 加密连接：
+> ```batch
+> sqlcmd -S localhost -U username -P password -Q "CREATE DATABASE DiningManagementSystem"
+> ```
+
 3. 安装所需的 Python 三方库：
 ```batch
 pip install -r requirements.txt
